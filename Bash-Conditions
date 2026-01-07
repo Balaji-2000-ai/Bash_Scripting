@@ -131,6 +131,26 @@ fi
 
 
 
+#!/bin/bash
+
+echo "Enter Username:"
+read username
+
+if [[ "$username" == "admin" ]]; then
+    read -sp "Enter Password: " password
+    echo
+
+    if [[ "$password" == "admin@123" ]]; then
+        echo "You have logged in successfully"
+    else
+        echo "Check your password"
+    fi
+else
+    echo "Check your username"
+fi
+
+
+
 
 
 
