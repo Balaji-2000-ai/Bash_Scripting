@@ -9,3 +9,131 @@ fi
 
 
 
+#sh script.sh flm 5 17
+#!/bin/bash
+
+name=$1
+starting=$2
+ending=$3
+
+# Create directories from $name$starting to $name$ending
+# eval is required so that {..} expansion works with variables
+eval mkdir "${name}"{$starting..$ending}
+
+
+
+#!/bin/bash
+
+# Source file to backup
+src="/var/log/httpd/access_log"
+
+# Destination folder for backups
+dest="backup"
+
+# Timestamp for backup file name
+time=$(date +"%Y-%m-%d-%H-%M-%S")
+
+# Backup file name with timestamp
+backupfile="$dest/$time.tgz"
+
+echo "Taking backup..."
+
+# Create compressed archive (tarball) of the source file
+# -z : gzip compression
+# -c : create archive
+# -v : verbose
+# -f : filename
+# --absolute-names : store full path names
+tar zcvf "$backupfile" --absolute-names "$src"
+
+echo "Backup completed: $backupfile"
+
+
+
+#!/bin/bash
+
+# Path to the log file
+log_file="/root/manifests"
+
+# Maximum allowed size in bytes (1MB)
+max_size=1000000
+
+# Check if the log file size exceeds max_size
+if [[ $(wc -c < "$log_file") -gt $max_size ]]; then
+    # Move the old log file to a backup
+    mv "$log_file" "$log_file.oldfile"
+    
+    # Create a new empty log file
+    touch "$log_file"
+fi
+
+
+
+#!/bin/bash
+
+# Action: add or delete
+action=$1
+
+# Username to add or delete
+username=$2
+
+if [[ "$action" == "add" ]]; then
+    # Add a new user
+    useradd "$username"
+
+elif [[ "$action" == "delete" ]]; then
+    # Delete the user and remove home directory
+    userdel -r "$username"
+
+else
+    echo "Usage: $0 {add | delete} username"
+    exit 1
+fi
+
+
+
+#!/bin/bash
+
+# System Maintenance Script
+echo "Starting system maintenance..."
+
+# Clean /tmp files older than 7 days
+echo "Cleaning /tmp directory..."
+find /tmp -type f -mtime +7 -exec rm -f {} \;
+find /tmp -type d -empty -exec rmdir {} \;  # remove empty directories
+
+# Update and upgrade system packages
+echo "Updating system packages..."
+yum update -y && yum upgrade -y
+
+echo "System maintenance completed!"
+
+
+
+#!/bin/bash
+
+# Function to check the status of one or more services
+check_service() {
+    for service in "$@"; do
+        if systemctl is-active --quiet "$service"; then
+            echo "The service '$service' is running"
+        else
+            echo "The service '$service' is NOT running"
+        fi
+    done
+}
+
+# Call the function with services to check
+check_service httpd docker jenkins
+
+
+
+#!/bin/bash
+
+# Show available memory in MB
+echo "Available Memory: $(free -m | awk '/Mem/ {print $4 " MB"}')"
+
+# Show total size of EBS volume (example: /dev/xvda1)
+echo "Total EBS Volume: $(df -h | awk '$1=="/dev/xvda1" {print $2}')"
+
+
