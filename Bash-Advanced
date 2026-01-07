@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Check if the current user is root
+if [[ $(whoami) == "root" ]]; then
+    echo "Root User"
+else
+    echo "Non-Root User"
+fi
+
+
+
