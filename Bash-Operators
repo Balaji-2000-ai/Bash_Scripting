@@ -1,1 +1,32 @@
+#Username AND password must be correct
+#!/bin/bash
+
+echo "Enter Username:"
+read username
+
+read -sp "Enter Password: " password
+echo
+
+if [[ "$username" == "admin" && "$password" == "admin@123" ]]; then
+    echo "You have logged in successfully"
+else
+    echo "Check your credentials"
+fi
+
+
+
+#Username OR password matches
+#!/bin/bash
+
+echo "Enter Username:"
+read username
+
+read -sp "Enter Password: " password
+echo
+
+if [[ "$username" == "admin" || "$password" == "admin@123" ]]; then
+    echo "You have logged in successfully"
+else
+    echo "Check your credentials"
+fi
 
