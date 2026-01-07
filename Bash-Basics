@@ -1,0 +1,45 @@
+#!/bin/bash
+
+name="Balaji"
+course="DevOps"
+
+echo "My name is $name and I am learning $course"
+
+
+
+#!/bin/bash
+
+echo "Please enter your name:"
+read myName   # Entered name is stored in myName
+
+echo "I am $myName"
+
+
+
+#!/bin/bash
+
+echo "Enter Username:"
+read Username
+
+read -sp "Enter Password: " Password   # -s = silent, -p = prompt
+
+echo -e "\nMy username is $Username and my password is $Password"  # -e enables \n
+
+
+
+#!/bin/bash
+
+echo "My name is $1"
+echo "I am working for $2"
+echo "I am from $3"
+echo "I am learning $4"
+
+echo "All the arguments are $@"
+echo "This prints the filename that has arguments $0"
+
+#sh script.sh Balaji Amazon Dublin DevOps
+
+
+
+
+
