@@ -1,0 +1,138 @@
+#!/bin/bash
+
+a=22
+b=11
+
+sum=$((a + b))
+echo "Sum of 2 variables is $sum"
+
+
+
+#!/bin/bash
+
+a=22
+
+# Spaces are required inside [[ ]]
+if [[ $a -eq 22 ]]; then
+    echo "The value is true"
+else
+    echo "The value is false"
+fi   # 'fi' closes the if condition
+
+
+
+#!/bin/bash
+
+string=""
+
+# -z checks if the string length is zero (empty string)
+if [[ -z $string ]]; then
+    echo "This is empty string"
+fi
+
+
+
+#!/bin/bash
+
+string="Balaji"
+
+# -n checks if the string is non-empty
+if [[ -n "$string" ]]; then
+    echo "This is non-empty string"
+fi
+
+
+
+#!/bin/bash
+
+string1="Balaji"
+string2="Balaji"
+
+if [[ "$string1" == "$string2" ]]; then
+    echo "Both are equal"
+fi
+
+
+
+#!/bin/bash
+
+string1="Balaji"
+string2="Loka"
+
+if [[ "$string1" != "$string2" ]]; then
+    echo "Both are not equal"
+fi
+
+
+
+#!/bin/bash
+
+a=22
+b=22
+
+if [[ $a -eq $b ]]; then
+    echo "Both are equal"
+fi
+
+
+
+#!/bin/bash
+
+a=22
+b=24
+
+if [[ $a -ne $b ]]; then
+    echo "Both are not equal"
+fi
+
+
+
+#!/bin/bash
+
+a=27
+b=24
+
+if [[ $a -gt $b ]]; then
+    echo "a is greater than b"
+fi
+
+
+
+#!/bin/bash
+
+a=20
+b=24
+
+if [[ $a -lt $b ]]; then
+    echo "a is less than b"
+fi
+
+
+
+#!/bin/bash
+
+a=28
+b=24
+
+if [[ $a -ge $b ]]; then   # greater than or equal to
+    echo "a is greater than or equal to b"
+fi
+
+
+
+#!/bin/bash
+
+a=18
+b=24
+
+if [[ $a -le $b ]]; then   # less than or equal to
+    echo "a is less than or equal to b"
+fi
+
+
+
+
+
+
+
+
