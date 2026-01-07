@@ -1,0 +1,45 @@
+#!/bin/bash
+
+file_path="/root/myapp"  # myapp is the file present in the root directory
+
+if [[ -e "$file_path" ]]; then
+    echo "File exists"
+else
+    echo "File doesn't exist"
+fi
+
+
+#-w: writable, -x: executable
+#!/bin/bash
+
+file_path="/root/myapp"  # Path to the file
+
+if [[ -r "$file_path" ]]; then
+    echo "File has read permissions"
+else
+    echo "File has no read permissions"
+fi
+
+
+
+#!/bin/bash
+
+file_path="/root/myapp"  # Path to the file
+
+if [[ -f "$file_path" ]]; then
+    echo "Regular file exists"
+else
+    echo "Regular file doesn't exist"
+fi
+
+
+
+#!/bin/bash
+
+file_path="/root/myapp"  # Path to the folder
+
+if [[ -d "$file_path" ]]; then
+    echo "Folder exists"
+else
+    echo "Folder doesn't exist"
+fi
